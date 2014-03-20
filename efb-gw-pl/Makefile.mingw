@@ -1,0 +1,14 @@
+
+CC=i586-mingw32msvc-gcc
+
+all: test1.exe
+
+test1.exe: dio.o matlabfunctions.o platinum.o star.o synthesis.o test.o wavread.o
+	$(CC) -g -O0 -o $@ $? -L. -lm -lfftw3-3
+
+.cpp.o:
+	$(CC) -I. -Wall -g -O0 -I/usr/include -c $<
+
+clean:
+	rm -f *.o
+

@@ -1,0 +1,6 @@
+OS 	: Windows 7 64 bit
+CPU 	: Core i5 2.53 GHz
+メモリ 	: 4 GB
+
+開発ソフト
+Visual Studio 2008 Version 9.0.30729.1 SP
