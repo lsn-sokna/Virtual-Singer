@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project name="xvsqexec" default="package" basedir=".">
+        <path id="maincp">
+	  <fileset dir="library">
+	    <include name="**/*.jar" />
+	  </fileset>
+	  <pathelement path="/usr/share/java/junit.jar"/>
+	</path>
+	<target name="build">
+	  <javac srcdir="." includeantruntime="true">
+		<classpath refid="maincp">
+		</classpath>
+		<compilerarg value="-Xlint:deprecation" />
+	  </javac>
+	</target>
+	<target name="test" depends="build">
+	  <junit printsummary="yes">
+	    <formatter type="plain" usefile="false" />
+	    <test name="org.debian.paulliu.xvsqexec.test.TestNote"/>
+	    <test name="org.debian.paulliu.xvsqexec.test.TestOtoFileRecord"/>
+	    <test name="org.debian.paulliu.xvsqexec.test.TestGenInfo"/>
+	    <classpath refid="maincp">
+	    </classpath>
+	    <classpath>
+	      <pathelement path="."/>
+	    </classpath>
+	  </junit>
+	</target>
+	<target name="test-withnet" depends="test">
+	  <junit printsummary="yes">
+	    <formatter type="plain" usefile="false" />
+	    <classpath refid="maincp">
+	    </classpath>
+	    <classpath>
+	      <pathelement path="."/>
+	    </classpath>
+	  </junit>
+	</target>
+	<target name="package" depends="build">
+	  <manifestclasspath property="jar.classpath" jarfile="xvsqexec.jar">
+	    <classpath>
+	      <fileset dir="library">
+		<include name="**/*.jar" />
+	      </fileset>
+	    </classpath>
+	  </manifestclasspath>
+	  <jar basedir="." destfile="xvsqexec.jar" level="9"
+	       excludes="xvsqexec.jar">
+	    <zipgroupfileset dir="library" includes="**/*.jar" />
+	    <manifest>
+	      <attribute name="Manifest-Version" value="1.0" />
+	      <attribute name="Main-Class" value="org.debian.paulliu.xvsqexec.Main" />
+	      <attribute name="Class-Path" value="${jar.classpath} /usr/share/java/junit.jar" />
+	    </manifest>
+	  </jar>
+	</target>
+	<target name="clean">
+		<delete failonerror="false" includeemptydirs="true">
+			<fileset file="*.class" />
+			<fileset dir="org/debian/paulliu">
+			  <include name="**/*.class" />
+			</fileset>
+			<fileset file="xvsqexec.jar" />
+		</delete>
+		<delete file="xvsqexec_zh_TW.properties" />
+	</target>
+</project>
+        
