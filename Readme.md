@@ -17,7 +17,7 @@
 		+ant(on xvsqExec directory)
 
 3. Now let create .wav file by using command line: java -jar xvsqexec.jar <patch of efb-gw> <patch of wavtool-pl> filename.wav composefile.xvsq <pathc of oto.ini>
-   Example: java -jar xvsqexec.jar ~/Desktop/efb-gw/ ~/Desktop/wavtool-pl/ output.wav happybirthday.xvsq ~/Desktop/11/oto.ini
+4. Example: java -jar xvsqexec.jar ~/Desktop/efb-gw/ ~/Desktop/wavtool-pl/ output.wav happybirthday.xvsq ~/Desktop/11/oto.ini
 
 
 
